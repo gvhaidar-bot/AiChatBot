@@ -2,25 +2,30 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import { clerkMiddleware } from "@clerk/express";
+import aiRouter from "./routes/aiRoutes.js";
+import chatRouter from "./routes/chatRoute.js";
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 app.use(clerkMiddleware());
+
 app.get("/", (req, res) => {
   res.send("backend is running");
 });
 
-// handle route
+app.use("/api/ai", aiRouter);
+app.use("/api/chat", chatRouter);
+
 app.use((err, req, res, next) => {
-  if (err.message == "Unauthenticated") {
-    return res.status(401).json({ message: "Aunthentication required" });
+  if (err.message === "Unauthenticated") {
+    return res.status(401).json({ message: "Authentication required" });
   }
-  res.status(500).json({ message: "server error " });
+  res.status(500).json({ message: "Server error" });
 });
 
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
-  console.log("server running in port", PORT);
+  console.log(`Server running on port ${PORT}`);
 });
