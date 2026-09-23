@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Chat from "./pages/Chat";
 import { useAuth } from "@clerk/clerk-react";
 import { useEffect } from "react";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 const App = () => {
   const { getToken } = useAuth();
@@ -10,12 +11,12 @@ const App = () => {
     getToken().then((token) => console.log(token));
   }, []);
   return (
-    <>
+    <ThemeProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/chat" element={<Chat />} />
       </Routes>
-    </>
+    </ThemeProvider>
   );
 };
 

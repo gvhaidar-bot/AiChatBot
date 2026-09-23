@@ -165,7 +165,7 @@ const Chat = () => {
 
   if (!user) {
     return (
-      <div className="flex items-center justify-center h-screen bg-zinc-950">
+      <div className="flex items-center justify-center h-screen bg-white dark:bg-zinc-950">
         <SignIn />
       </div>
     );
@@ -184,7 +184,7 @@ const Chat = () => {
         }}
       />
       <div
-        className="flex h-screen  bg-zinc-950   text-zinc-200 overflow-hidden"
+        className="flex h-screen  bg-white dark:bg-zinc-950   text-slate-800 dark:text-zinc-200 overflow-hidden"
         style={{ fontFamily: "'DM sans', sans-serif " }}
       >
         {/* side bar */}
@@ -192,7 +192,7 @@ const Chat = () => {
 
         <main className="flex flex-col flex-1 min-w-0 relative">
           {/* top Bar */}
-          <section className="flex items-center justify-between  px-6 py-3  border-b border-zinc-800  bg-zinc-950">
+          <section className="flex items-center justify-between  px-6 py-3  border-b border-slate-200 dark:border-zinc-800  bg-white dark:bg-zinc-950">
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-2">
                 <svg
@@ -205,7 +205,7 @@ const Chat = () => {
                 >
                   <path
                     d="m11.896 85.203 4.879-28.693 24.182-24.286 11.895 11.843zM43.104 0l-4.879 28.693-24.182 24.286L2.148 41.136z"
-                    fill="#ffff"
+                    fill="currentColor"
                   />
                   <text
                     x="74"
@@ -213,7 +213,7 @@ const Chat = () => {
                     fontFamily="Poppins, Arial, sans-serif"
                     fontSize="52"
                     fontWeight="700"
-                    fill="#ffffff"
+                    fill="currentColor"
                     letterSpacing="1"
                   >
                     SENDAR
@@ -229,7 +229,7 @@ const Chat = () => {
 
             <button
               onClick={startNewChat}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 text-xs font-medium transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-zinc-900 text-xs font-medium transition-colors"
             >
               <Plus size={13} /> New Chat
             </button>
@@ -248,7 +248,7 @@ const Chat = () => {
                     <img
                       src={user.imageUrl}
                       alt="image"
-                      className="w-8 h-8  rounded-full  border border-zinc-700 shrink-0 object-cover"
+                      className="w-8 h-8  rounded-full  border border-slate-300 dark:border-zinc-700 shrink-0 object-cover"
                     />
                   ) : (
                     <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center ">
@@ -261,7 +261,7 @@ const Chat = () => {
                       >
                         <path
                           d="m11.896 85.203 4.879-28.693 24.182-24.286 11.895 11.843zM43.104 0l-4.879 28.693-24.182 24.286L2.148 41.136z"
-                          fill="#ffff"
+                          fill="currentColor"
                         />
                       </svg>
                     </div>
@@ -269,7 +269,7 @@ const Chat = () => {
 
                   {/* content */}
                   <div
-                    className={`max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${message.role === "user" ? "bg-indigo-600 text-white rounded-tr-sm" : "bg-zinc-800 text-zinc-200 rounded-tl-sm border border-zinc-700"}`}
+                    className={`max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${message.role === "user" ? "bg-indigo-600 text-white rounded-tr-sm" : "bg-slate-200 dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 rounded-tl-sm border border-slate-300 dark:border-zinc-700"}`}
                   >
                     {message.mode === "image" &&
                     message.role === "assistent" ? (
@@ -283,17 +283,17 @@ const Chat = () => {
                         remarkPlugins={[remarkGfm]}
                         components={{
                           h1: ({ children }) => (
-                            <h1 className="text-base font-bold text-white mt-3 mb-1">
+                            <h1 className="text-base font-bold text-slate-900 dark:text-white mt-3 mb-1">
                               {children}
                             </h1>
                           ),
                           h2: ({ children }) => (
-                            <h2 className="text-sm font-bold text-white mt-2 mb-1">
+                            <h2 className="text-sm font-bold text-slate-900 dark:text-white mt-2 mb-1">
                               {children}
                             </h2>
                           ),
                           h3: ({ children }) => (
-                            <h3 className="text-sm font-semibold text-zinc-100 mt-2 mb-1">
+                            <h3 className="text-sm font-semibold text-slate-900 dark:text-zinc-100 mt-2 mb-1">
                               {children}
                             </h3>
                           ),
@@ -311,23 +311,27 @@ const Chat = () => {
                             </ol>
                           ),
                           li: ({ children }) => (
-                            <li className="text-zinc-300">{children}</li>
+                            <li className="text-slate-700 dark:text-zinc-300">
+                              {children}
+                            </li>
                           ),
                           strong: ({ children }) => (
-                            <strong className="font-semibold text-white">
+                            <strong className="font-semibold text-slate-900 dark:text-white">
                               {children}
                             </strong>
                           ),
                           em: ({ children }) => (
-                            <em className="italic text-zinc-400">{children}</em>
+                            <em className="italic text-slate-600 dark:text-zinc-400">
+                              {children}
+                            </em>
                           ),
                           code: ({ inline, children }) =>
                             inline ? (
-                              <code className="bg-zinc-900 text-indigo-300 px-1 py-0.5 rounded text-xs font-mono">
+                              <code className="bg-slate-100 dark:bg-zinc-900 text-indigo-300 px-1 py-0.5 rounded text-xs font-mono">
                                 {children}
                               </code>
                             ) : (
-                              <code className="block bg-zinc-900 text-indigo-300 p-3 rounded-lg text-xs font-mono overflow-x-auto my-2 border border-zinc-700">
+                              <code className="block bg-slate-100 dark:bg-zinc-900 text-indigo-300 p-3 rounded-lg text-xs font-mono overflow-x-auto my-2 border border-slate-300 dark:border-zinc-700">
                                 {children}
                               </code>
                             ),
@@ -335,7 +339,7 @@ const Chat = () => {
                             <pre className="my-2">{children}</pre>
                           ),
                           blockquote: ({ children }) => (
-                            <blockquote className="border-l-2 border-indigo-500 pl-3  text-zinc-400 italic my-2">
+                            <blockquote className="border-l-2 border-indigo-500 pl-3  text-slate-600 dark:text-zinc-400 italic my-2">
                               {children}{" "}
                             </blockquote>
                           ),
@@ -366,9 +370,12 @@ const Chat = () => {
               {isLoading && (
                 <div className="flex gap-3 items-center">
                   <div className="w-8 h-8 flex items-center justify-center rounded-lg shrink-0 bg-indigo-600">
-                    <Sparkles size={14} className="text-white" />
+                    <Sparkles
+                      size={14}
+                      className="text-slate-900 dark:text-white"
+                    />
                   </div>
-                  <div className="bg-zinc-800 border border-zinc-700 rounded-2xl rounded-tl-sm px-4 py-3 flex items-center gap-1.5">
+                  <div className="bg-slate-200 dark:bg-zinc-800 border border-slate-300 dark:border-zinc-700 rounded-2xl rounded-tl-sm px-4 py-3 flex items-center gap-1.5">
                     <span
                       className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-bounce"
                       style={{ animationDelay: "0ms" }}
@@ -390,15 +397,15 @@ const Chat = () => {
           </div>
 
           {/* input area */}
-          <div className="absolute bottom-0  left-0 right-0  px-4 pb-5 pt-3 bg-linear-to-t from-zinc-950 via-zinc-950/50  to-transparent ">
+          <div className="absolute bottom-0  left-0 right-0  px-4 pb-5 pt-3 bg-linear-to-t from-white dark:from-zinc-950 via-white/50 dark:via-zinc-950/50  to-transparent ">
             <div className="max-w-2xl  mx-auto space-y-2">
               {/* free usage bar */}
               {plan !== "premium" && freeUsage > 0 && (
                 <div className="flex items-center gap-3 px-1">
-                  <span className="text-[10px]  text-zinc-500  font-medium whitespace-nowrap">
+                  <span className="text-[10px]  text-slate-500 dark:text-zinc-500  font-medium whitespace-nowrap">
                     {freeUsage}/ 10 free usage{" "}
                   </span>
-                  <div className="flex-1 h-1 bg-zinc-800 rounded-full overflow-hidden">
+                  <div className="flex-1 h-1 bg-slate-200 dark:bg-zinc-800 rounded-full overflow-hidden">
                     <div
                       className={`h-full rounded-full transition-all duration-500 ${remaining <= 1 ? "bg-red-500" : remaining <= 3 ? "bg-yellow-500" : "bg-indigo-500"}`}
                       style={{ width: `${(freeUsage / 10) * 100}%` }}
@@ -417,13 +424,13 @@ const Chat = () => {
               )}
 
               {/* input box */}
-              <div className="bg-zinc-900 border border-zinc-700 rounded-2xl overflow-hidden focus-within:border-indigo-500 transition-colors">
+              <div className="bg-slate-100 dark:bg-zinc-900 border border-slate-300 dark:border-zinc-700 rounded-2xl overflow-hidden focus-within:border-indigo-500 transition-colors">
                 {/* mode input */}
                 <div className="flex gap-1 px-3 py-2.5">
                   <button
                     onClick={() => toggleMode("text")}
                     type="button"
-                    className={`flex items-center gap-1.5 px-3 py-1 rounded-lg  text-xs font-medium transition-colors ${formData.mode === "text" ? "bg-indigo-500 text-white" : "text-zinc-500 hover:text-zinc-300"} `}
+                    className={`flex items-center gap-1.5 px-3 py-1 rounded-lg  text-xs font-medium transition-colors ${formData.mode === "text" ? "bg-indigo-500 text-white" : "text-slate-500 dark:text-zinc-500 hover:text-zinc-300"} `}
                   >
                     <Type size={14} />
                     Text
@@ -431,7 +438,7 @@ const Chat = () => {
                   <button
                     onClick={() => toggleMode("image")}
                     type="button"
-                    className={`flex items-center gap-1.5 px-3 py-1 rounded-lg  text-xs font-medium transition-colors ${formData.mode === "image" ? "bg-indigo-500 text-white" : "text-zinc-500 hover:text-zinc-300"} `}
+                    className={`flex items-center gap-1.5 px-3 py-1 rounded-lg  text-xs font-medium transition-colors ${formData.mode === "image" ? "bg-indigo-500 text-white" : "text-slate-500 dark:text-zinc-500 hover:text-zinc-300"} `}
                   >
                     <ImageIcon size={14} /> Image
                   </button>
@@ -457,7 +464,7 @@ const Chat = () => {
                           : "ask me anyting"
                     }
                     rows={1}
-                    className="flex-1 bg-transparent text-sm text-zinc-100 placeholder:text-zinc-600 outline-none disabled:opacity-40 disabled:cursor-not-allowed resize-none overflow-y-auto py-1.5 max-h-[150px]"
+                    className="flex-1 bg-transparent text-sm text-slate-900 dark:text-zinc-100 placeholder:text-slate-400 dark:placeholder:text-zinc-600 outline-none disabled:opacity-40 disabled:cursor-not-allowed resize-none overflow-y-auto py-1.5 max-h-[150px]"
                   />
                   <button
                     disabled={
@@ -470,7 +477,7 @@ const Chat = () => {
                 </form>
               </div>
 
-              <p className="text-center  text-[10px]  text-zinc-600">
+              <p className="text-center  text-[10px]  text-slate-400 dark:text-zinc-600">
                 AI bisa membuat kesalahan. tolong cek info kembali
               </p>
             </div>
