@@ -57,7 +57,7 @@ npm run dev
 
 **Frontend:**
 
-- (isi sendiri: React / Vite / Tailwind, dll)
+-  React / Vite / Tailwind,
 
 ## 🔐 Environment Variables
 
